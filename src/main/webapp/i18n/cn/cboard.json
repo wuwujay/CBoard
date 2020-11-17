@@ -9,6 +9,7 @@
     "EDIT": "编辑",
     "EDIT_DEFAULT_VALUE": "设置默认值",
     "CONFIRM_DELETE": "真的想好了要删除吗?",
+    "CONFIRM_RESET": "真的想好了要设置默认值吗?",
     "CONFIRM_SAVE_BEFORE_PREVIEW": "预览之前需要保存，确定保存？",
     "NOT_ALLOWED_TO_DELETE_BECAUSE_BE_DEPENDENT": "不允许删除，因为被依赖！",
     "TIP": "提示",
@@ -40,6 +41,8 @@
     "REMOVE": "关闭",
     "ADD_RELATIONS": "添加关联",
     "DEL_RELATIONS": "删除关联",
+    "ADD_EXTENAL": "添加跳转看板",
+    "DEL_EXTENAL": "删除跳转看板",
     "DATE": "日期",
     "VALUE": "值",
     "INFORMATION": "信息",
@@ -48,7 +51,10 @@
     "CREATE_TIME": "创建时间",
     "UPDATE_TIM": "最后修改时间",
     "FOLD_TREE": "展开所有树节点",
-    "UNFOLD_TREE": "收起所有树节点"
+    "UNFOLD_TREE": "收起所有树节点",
+    "MUST_SELECT_ONE_BOARD": "请选择一个看板",
+    "SKIP_TO": "跳转至",
+    "SKIP": "跳转"
   },
   "HOMEPAGE": {
     "TITLE": "首页",
@@ -74,7 +80,8 @@
     "USER_ADMIN": "用户管理",
     "RES_ADMIN": "资源管理",
     "JOB": "定时任务",
-    "SHARE_RESOURCE": "资源分享"
+    "SHARE_RESOURCE": "资源分享",
+    "HOMEPAGE": "主页设置"
   },
   "HEADER": {
     "SIGN_OUT": "注销",
@@ -242,6 +249,7 @@
       "WIDGET": "图表",
       "PREVIEW": "预览",
       "ADD_PARAMROW": "添加参数行",
+      "ADD_ROW_PARAM": "添加内部参数行",
       "ADD_PARAM": "添加参数",
       "PARAM_ROW": "参数行",
       "PARAM": "查询参数",
@@ -251,6 +259,7 @@
       "PARAM_TYPE": "交互类型",
       "PARAM_TYPE_SELECTOR": "选择器",
       "PARAM_TYPE_SLIDER": "滑动器",
+      "PARAM_TYPE_DATE_PICKER": "时间选择器",
       "CHART_NAME":"图表名称",
       "ENTER_PARAMETER_NAME": "请输入参数名称",
       "DASHBOARD_SOMETHING_WRONG": "有部分图表访问出错,请检查看板的配置!",
@@ -284,6 +293,7 @@
       "NEW_TIMELINE_LAYOUT": "新建时间轴布局",
       "NEW_COCKPIT_LAYOUT":"新建全屏监控布局",
       "VALUE_FORMMAT_ALERT": "只有日期类型需要格式化",
+      "VALUE_FORMMAT_ALERT_DEFAULT": "需格式化，默认",
       "AUTOMATIC_REFRESH_SWITCH": "自动刷新切换",
       "REMOVE_EMPTY_LINES": "清除空行",
       "DATA_REFRESH_TIME":"数据刷新时间",
@@ -292,7 +302,20 @@
       "WIDGET_TARGET_FIELDS":"关联图表维度",
       "BOARD_TARGET":"关联看板",
       "BOARD_TARGET_PARAMS":"关联看板参数",
-      "RELATION":"关联"
+      "RELATION":"关联",
+      "EXTENAL":"跳转看板",
+      "EXTENAL_CAPTION":"跳转看板名称",
+      "DATE_OPT_YESTERDAY": "昨日",
+      "DATE_OPT_TODAY": "今日",
+      "DATE_OPT_LAST_WEEK": "上周",
+      "DATE_OPT_THIS_WEEK": "本周",
+      "DATE_OPT_LAST_MONTH": "上月",
+      "DATE_OPT_THIS_MONTH": "本月",
+      "DATE_OPT_LAST_YEAR": "去年",
+      "DATE_OPT_THIS_YEAR": "本年",
+      "DATE_OPT_DAY_7": "过去7天",
+      "DATE_OPT_DAY_30": "过去30天",
+      "DATE_OPT_ALL": "全部"
     },
     "CATEGORY": {
       "NAME": "看板分类名称",

@@ -1,6 +1,8 @@
 DROP DATABASE IF EXISTS cboard;
 CREATE DATABASE cboard CHARACTER SET utf8;
 USE cboard;
+SET SQL_MODE='ALLOW_INVALID_DATES';
+SET SQL_SAFE_UPDATES = 0;
 
 CREATE TABLE dashboard_board (
   board_id bigint(20) NOT NULL AUTO_INCREMENT,
@@ -103,6 +105,12 @@ CREATE TABLE dashboard_board_param (
   PRIMARY KEY (board_param_id)
 );
 
+CREATE TABLE dashboard_homepage (
+  board_id bigint(20) NOT NULL,
+  user_id varchar(50) NOT NULL,
+  PRIMARY KEY (board_id, user_id)
+);
+
 -- 升级0.4需要执行的
 ALTER TABLE dashboard_dataset ADD create_time TIMESTAMP DEFAULT now();
 ALTER TABLE dashboard_dataset ADD update_time TIMESTAMP;
@@ -139,3 +147,9 @@ CREATE TRIGGER insert_board_update_time_trigger
 BEFORE INSERT ON dashboard_board FOR EACH ROW SET new.update_time = now();
 CREATE TRIGGER update_board_update_time_trigger
 BEFORE UPDATE ON dashboard_board FOR EACH ROW SET new.update_time = now();
+
+CREATE TABLE dashboard_homepage (
+  board_id bigint(20) NOT NULL,
+  user_id varchar(50) NOT NULL,
+  PRIMARY KEY (board_id, user_id)
+);

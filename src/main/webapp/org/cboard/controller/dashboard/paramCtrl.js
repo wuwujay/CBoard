@@ -47,7 +47,7 @@ cBoard.controller('paramCtrl', function ($scope, $uibModal, $http) {
         }
     };
 
-    $scope.init = function () {
+    $scope.init = function (crow) {
         $scope.param = $scope.$parent.param;
         $scope.param.selects = [];
         if(!$scope.param.type) $scope.param.type = '=';
@@ -70,10 +70,12 @@ cBoard.controller('paramCtrl', function ($scope, $uibModal, $http) {
                     translate: function (value) {
                         return formatter(value, cfg.formatter);
                     },
+                    /* 滑动器参数改动 */
                     onChange: function (sliderId, modelValue, highValue, pointerType) {
+                        debugger;
                         $scope.param.type = _.result(cfg, 'filterType', '[a,b]');
                         $scope.param.values = [formatter(modelValue, cfg.value_fmt), formatter(highValue, cfg.value_fmt)];
-                        apply();
+                        apply(crow);
                     }
                 }
             };
@@ -93,7 +95,7 @@ cBoard.controller('paramCtrl', function ($scope, $uibModal, $http) {
                     $scope.param.values = [formatter($scope.slider.minValue, cfg.value_fmt), formatter($scope.slider.maxValue, cfg.value_fmt)];
                 }
             }
-        } else {
+        } else if ($scope.param.paramType == 'selector') {
             _.each($scope.param.col, function (c) {
                 var p;
                 if (_.isUndefined(c.datasetId)) {
@@ -129,7 +131,8 @@ cBoard.controller('paramCtrl', function ($scope, $uibModal, $http) {
         $scope.$emit('paramInitFinish', $scope.param);
     };
 
-    $scope.editParam = function () {
+    /* 选择器参数改动 */
+    $scope.editParam = function (crow) {
         $uibModal.open({
             templateUrl: 'org/cboard/view/dashboard/modal/param.html',
             windowTemplateUrl: 'org/cboard/view/util/modal/window.html',
@@ -155,7 +158,7 @@ cBoard.controller('paramCtrl', function ($scope, $uibModal, $http) {
                     return function (param) {
                         $scope.param.values = param.values;
                         $scope.param.type = param.type;
-                        $scope.applyParamFilter();
+                        $scope.applyParamFilter(crow);
                     }
                 }
             },

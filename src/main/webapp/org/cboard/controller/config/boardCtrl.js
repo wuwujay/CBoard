@@ -219,6 +219,14 @@ cBoard.controller('boardCtrl',
             row.widgets.push(w);
         };
 
+        /*添加行内参数*/
+        $scope.addWidgetPramRow = function (row) {
+            if (!row.paramRows){
+                row.paramRows = [];
+            }
+            row.paramRows.push({type: 'param', params: []});
+        };
+
         $scope.addRow = function () {
             var row = {type: 'widget', widgets: []};
             $scope.curBoard.layout.rows.push(row);
@@ -242,6 +250,16 @@ cBoard.controller('boardCtrl',
         $scope.delRelations = function (widget) {
             if (widget.relations) {
                 delete widget.relations;
+            }
+        };
+
+        $scope.addExtenal = function (widget) {
+        	widget.extenal = {};
+        };
+
+        $scope.delExtenal = function (widget) {
+            if (widget.extenal) {
+                delete widget.extenal;
             }
         };
 
@@ -310,6 +328,13 @@ cBoard.controller('boardCtrl',
             _.each($scope.curBoard.layout.rows, function (row) {
                 _.each(row.widgets, function (widget) {
                     delete widget.sourceId;
+                    if (!_.isUndefined(widget.extenal)) {
+                    	if (!_.isUndefined(widget.extenal.name)) {
+                    		if(_.isEqual(widget.extenal.name.replace(/\s+/g,""), '')) {
+                    			delete widget.extenal.name;
+                        	}
+                    	}
+                    }
                     if (!_.isUndefined(widget.relations)) {
                         delete widget.relations.sourceFields;
                         _.each(widget.relations.relations, function (relation) {
@@ -348,7 +373,8 @@ cBoard.controller('boardCtrl',
                 controller: function ($scope, $uibModalInstance) {
                     $scope.param_types = [
                         {name: translate('CONFIG.DASHBOARD.PARAM_TYPE_SELECTOR'), value: 'selector'},
-                        {name: translate('CONFIG.DASHBOARD.PARAM_TYPE_SLIDER'), value: 'slider'}
+                        {name: translate('CONFIG.DASHBOARD.PARAM_TYPE_SLIDER'), value: 'slider'},
+                        {name: translate('CONFIG.DASHBOARD.PARAM_TYPE_DATE_PICKER'), value: 'dateselector'}
                     ];
                     $scope.status = status;
                     $scope.param = param;
